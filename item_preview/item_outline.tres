@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dv1plbt0iiy6v"]
+
+[ext_resource type="Shader" path="res://item_preview/outline.gdshader" id="1_ewife"]
+
+[resource]
+shader = ExtResource("1_ewife")
+shader_parameter/top = true
+shader_parameter/left = true
+shader_parameter/right = true
+shader_parameter/bottom = true
+shader_parameter/topleft = true
+shader_parameter/topright = true
+shader_parameter/bottomleft = true
+shader_parameter/bottomright = true
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/inside = false
+shader_parameter/pixel_div = 4.0

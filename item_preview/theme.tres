@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dxjsudwode84c"]
+
+[ext_resource type="FontFile" uid="uid://d1s0vhfcj2fiv" path="res://font/ChronoType.ttf" id="1_c1l5p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmaxn"]
+content_margin_left = 28.0
+content_margin_top = 17.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
+bg_color = Color(0.133333, 0.133333, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6vk2"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+shadow_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbhef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dnsg"]
+content_margin_left = 2.0
+content_margin_top = 3.0
+content_margin_right = 2.0
+content_margin_bottom = 5.0
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jqrl"]
+content_margin_left = 27.0
+content_margin_top = 15.0
+content_margin_right = 8.0
+content_margin_bottom = 5.0
+bg_color = Color(0.133333, 0.133333, 0.141176, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4375"]
+
+[resource]
+default_font = ExtResource("1_c1l5p")
+default_font_size = 32
+ItemPreviewBottomBar/base_type = &"PanelContainer"
+ItemPreviewBottomBar/styles/panel = SubResource("StyleBoxFlat_gmaxn")
+ItemPreviewMain/base_type = &"PanelContainer"
+ItemPreviewMain/styles/panel = SubResource("StyleBoxFlat_d6vk2")
+ItemPreviewOutline/base_type = &"PanelContainer"
+ItemPreviewOutline/styles/panel = SubResource("StyleBoxTexture_sbhef")
+ItemPreviewSprite/base_type = &"PanelContainer"
+ItemPreviewSprite/styles/panel = SubResource("StyleBoxFlat_1dnsg")
+ItemPreviewTopBar/base_type = &"PanelContainer"
+ItemPreviewTopBar/styles/panel = SubResource("StyleBoxFlat_1jqrl")
+Window/styles/embedded_border = SubResource("StyleBoxEmpty_y4375")

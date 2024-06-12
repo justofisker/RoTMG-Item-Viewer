@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://45yynm3mxk6q"]
+
+[ext_resource type="Script" path="res://atlas_parser.gd" id="1_qwb8g"]
+[ext_resource type="Script" path="res://addons/SmoothScroll/SmoothScrollContainer.gd" id="2_d4nx2"]
+[ext_resource type="Script" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="3_hv8x1"]
+[ext_resource type="Script" path="res://item_preview/search_edit.gd" id="4_33ucd"]
+
+[sub_resource type="Resource" id="Resource_1f6xp"]
+script = ExtResource("3_hv8x1")
+friction = 4.0
+minimum_velocity = 0.4
+rebound_strength = 7.0
+
+[sub_resource type="Resource" id="Resource_ytsvk"]
+script = ExtResource("3_hv8x1")
+friction = 4.0
+minimum_velocity = 0.4
+rebound_strength = 7.0
+
+[node name="Main" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AtlasParser" type="Node" parent="."]
+script = ExtResource("1_qwb8g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "Item Name"
+expand_to_text_length = true
+script = ExtResource("4_33ucd")
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_d4nx2")
+wheel_scroll_damper = SubResource("Resource_1f6xp")
+dragging_scroll_damper = SubResource("Resource_ytsvk")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SmoothScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="HFlowContainer" parent="VBoxContainer/SmoothScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="VBoxContainer/HBoxContainer/LineEdit" method="_on_text_changed"]

@@ -1,0 +1,290 @@
+[gd_scene load_steps=20 format=3 uid="uid://deqwdcco24ij6"]
+
+[ext_resource type="Material" uid="uid://b2khc601v0ev5" path="res://item_preview/item_corner_mat.tres" id="1_3ctw1"]
+[ext_resource type="Theme" uid="uid://dxjsudwode84c" path="res://item_preview/theme.tres" id="1_7lfd0"]
+[ext_resource type="Texture2D" uid="uid://coabj0evdofst" path="res://item_preview/corners.png" id="2_5hvso"]
+[ext_resource type="Script" path="res://item_preview/item_tooltip.gd" id="2_i270u"]
+[ext_resource type="Texture2D" uid="uid://bc4r3v0omp0nk" path="res://item_preview/mandolin.png" id="4_gqovr"]
+[ext_resource type="Shader" path="res://item_preview/outline.gdshader" id="4_q3t75"]
+[ext_resource type="Texture2D" uid="uid://duwdljch3alj0" path="res://item_preview/red_forge.png" id="7_brfqr"]
+[ext_resource type="Texture2D" uid="uid://b2dlr02xree2v" path="res://item_preview/the_shatters.tres" id="7_c6r1g"]
+[ext_resource type="Texture2D" uid="uid://bogis1aadjw7w" path="res://item_preview/gold_forge.png" id="8_4goa2"]
+[ext_resource type="Texture2D" uid="uid://dtr4rqhtqgwuy" path="res://item_preview/st_forge.png" id="9_dngk4"]
+[ext_resource type="Texture2D" uid="uid://das6a6vv4jhyo" path="res://item_preview/silver_forge.png" id="9_qdeiw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqto2"]
+shader = ExtResource("4_q3t75")
+shader_parameter/top = true
+shader_parameter/left = true
+shader_parameter/right = true
+shader_parameter/bottom = true
+shader_parameter/topleft = true
+shader_parameter/topright = true
+shader_parameter/bottomleft = true
+shader_parameter/bottomright = true
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/inside = false
+shader_parameter/pixel_div = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7fw6"]
+font_size = 32
+font_color = Color(0.521569, 0.0784314, 0.980392, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ib6ud"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0opy"]
+font_size = 40
+font_color = Color(0.521569, 0.0784314, 0.980392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqt4m"]
+font_size = 32
+font_color = Color(0.572549, 0.572549, 0.572549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqkar"]
+font_size = 32
+font_color = Color(0.572549, 0.572549, 0.572549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m7cb4"]
+font_size = 69
+font_color = Color(1, 1, 0.560784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0p5pq"]
+font_size = 32
+font_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="ItemTooltip" type="MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(573, 0)
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 580.0
+offset_bottom = 384.0
+size_flags_vertical = 0
+theme = ExtResource("1_7lfd0")
+script = ExtResource("2_i270u")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_7lfd0")
+theme_type_variation = &"ItemPreviewMain"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TopBar" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+theme_type_variation = &"ItemPreviewTopBar"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="SpriteContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(82, 77)
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ItemPreviewSprite"
+
+[node name="ItemSprite" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpriteContainer"]
+material = SubResource("ShaderMaterial_fqto2")
+layout_mode = 2
+texture = ExtResource("4_gqovr")
+stretch_mode = 5
+
+[node name="TierLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SpriteContainer/ItemSprite"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -23.0
+offset_right = -7.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "UT"
+label_settings = SubResource("LabelSettings_p7fw6")
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Noble Mandolin"
+label_settings = SubResource("LabelSettings_ib6ud")
+clip_text = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+alignment = 1
+
+[node name="CollectionIcon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = ExtResource("7_c6r1g")
+stretch_mode = 5
+
+[node name="TierLabelBig" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "UT"
+label_settings = SubResource("LabelSettings_j0opy")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TopBar/VBoxContainer"]
+layout_mode = 2
+text = "Bard"
+label_settings = SubResource("LabelSettings_iqt4m")
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 27
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 27
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="DamageLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Damage"
+label_settings = SubResource("LabelSettings_rqkar")
+
+[node name="DamageNumberLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "400-500"
+label_settings = SubResource("LabelSettings_m7cb4")
+
+[node name="SoulboundLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Soulbound"
+label_settings = SubResource("LabelSettings_0p5pq")
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Woah"
+label_settings = SubResource("LabelSettings_rqkar")
+autowrap_mode = 2
+
+[node name="HBar" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0.34902, 0.12549, 0.580392, 1)
+
+[node name="RichDescription" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = " Rwar"
+fit_content = true
+
+[node name="HBar2" type="ColorRect" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0.34902, 0.12549, 0.580392, 1)
+
+[node name="RichInformation" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "Press [font s=48]Space[/font] in world to use
+[color=b9fdff]Hold[/color] LeftShift[color=b9fdff] to see more information"
+fit_content = true
+
+[node name="BottomBar" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ItemPreviewBottomBar"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar"]
+layout_mode = 2
+alignment = 2
+
+[node name="FeedpowerLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Feed Power: 1100"
+
+[node name="RedForgeIcon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_brfqr")
+stretch_mode = 5
+
+[node name="RedForgeAmt" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+text = "15"
+
+[node name="GoldForgeIcon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("8_4goa2")
+stretch_mode = 3
+
+[node name="GoldForgeAmt" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+text = "30
+"
+
+[node name="SilverForgeIcon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("9_qdeiw")
+stretch_mode = 3
+
+[node name="SilverForgeAmt" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+text = "45"
+
+[node name="StForgeIcon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("9_dngk4")
+stretch_mode = 3
+
+[node name="StForgeAmt" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BottomBar/HBoxContainer"]
+layout_mode = 2
+text = "20"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+material = ExtResource("1_3ctw1")
+layout_mode = 2
+texture = ExtResource("2_5hvso")
+region_rect = Rect2(0, 0, 90, 90)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
