@@ -207,6 +207,12 @@ func _ready() -> void:
 				pass
 			"GrantSupporterPoints":
 				pass
+			"GenericActivate":
+				pass
+			"CreateObject":
+				pass
+			"BoostForgeEnergy":
+				pass
 			_:
 				push_warning("Unknown on_use active " + active["active"])
 	
@@ -262,6 +268,8 @@ func _ready() -> void:
 						rich_description.text += "[color=ff0000]"
 					rich_description.text += str(amount) + " " + _stat_to_name(stat) + "[/color]"
 				"AbilityUseDiscount":
+					pass
+				"IncrementStatRelative":
 					pass
 				_:
 					push_warning("Unknown on_equip active " + active["active"])
@@ -326,12 +334,34 @@ func _set_item_tier(tier: String) -> void:
 		primary = Color.hex(0xff8c00ff)
 		secondary = Color.hex(0xd46109ff)
 		hbar = Color.hex(0x965d16ff)
-		_set_item_forge_amounts(0, 0, 0, 20)
+		if item.labels.has("POWERTIER_D"):
+			_set_item_forge_amounts(0, 0, 0, 5)
+		elif item.labels.has("POWERTIER_C"):
+			_set_item_forge_amounts(0, 0, 0, 10)
+		elif item.labels.has("POWERTIER_B"):
+			_set_item_forge_amounts(0, 0, 0, 20)
+		elif item.labels.has("POWERTIER_A"):
+			_set_item_forge_amounts(0, 0, 0, 40)
+		elif item.labels.has("POWERTIER_S") || item.labels.has("POWERTIER_SS"):
+			_set_item_forge_amounts(0, 0, 0, 80)
+		else:
+			_set_item_forge_amounts(0, 0, 0, 0)
 	elif tier == "UT":
 		primary = Color.hex(0x8514faff)
 		secondary = Color.hex(0xbf59ffff)
-		hbar = Color.hex(0x592094ff) 
-		_set_item_forge_amounts(15, 30, 45, 0 )
+		hbar = Color.hex(0x592094ff)
+		if item.labels.has("POWERTIER_D"):
+			_set_item_forge_amounts(0, 0, 15, 0)
+		elif item.labels.has("POWERTIER_C"):
+			_set_item_forge_amounts(0, 5, 20, 0)
+		elif item.labels.has("POWERTIER_B"):
+			_set_item_forge_amounts(0, 15, 30, 0)
+		elif item.labels.has("POWERTIER_A"):
+			_set_item_forge_amounts(0, 30, 40, 0)
+		elif item.labels.has("POWERTIER_S") || item.labels.has("POWERTIER_SS"):
+			_set_item_forge_amounts(15, 40, 45, 0)
+		else:
+			_set_item_forge_amounts(0, 0, 0, 0)
 	else:
 		primary = Color.hex(0x8d8d8dff)
 		hbar = Color.hex(0x1f1f1fff)

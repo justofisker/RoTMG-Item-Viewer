@@ -24,6 +24,8 @@ func _ready() -> void:
 	
 	var dir = DirAccess.open("res://xml/")
 	for fname in dir.get_files():
+		if fname != "equip.xml":
+			continue
 		parse_equip_xml("res://xml/" + fname)
 
 var loaded_sheets := {}
