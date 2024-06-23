@@ -337,7 +337,11 @@ func parse_texture() -> ObjectTexture:
 					t.file = p.get_node_data()
 				"Index":
 					read_whitespace()
-					t.index = p.get_node_data().hex_to_int()
+					var index_string := p.get_node_data()
+					if index_string.begins_with("0x"):
+						t.index = p.get_node_data().hex_to_int()
+					else:
+						t.index = p.get_node_data().to_int()
 			p.skip_section()
 		read()
 	
